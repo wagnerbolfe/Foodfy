@@ -45,9 +45,11 @@ module.exports = {
       RETURNING id
     `
       if (!data.is_admin) data.is_admin = false
+
       const password = crypto.randomBytes(4).toString('hex')
       const password_hash = await hash(password, 8)
       const values = [data.name, data.email, password_hash, data.is_admin]
+
       const results = await db.query(query, values)
 
       await mailer.sendMail({
@@ -59,6 +61,29 @@ module.exports = {
               <p>Sua nova senha para acesso ao site: <strong>${password}<strong/></p>
               `
       })
+
+      return results.rows[0].id
+    } catch (err) {
+      console.error(err)
+    }
+  },
+  async createAdmin (data) {
+    try {
+      const query = `
+      INSERT INTO users (
+        name,
+        email,
+        password,
+        is_admin
+      ) VALUES ($1, $2, $3, $4)
+      RETURNING id
+    `
+      if (!data.is_admin) data.is_admin = false
+
+      const password = await hash('12345', 8)
+      const values = [data.name, data.email, password, data.is_admin]
+
+      const results = await db.query(query, values)
 
       return results.rows[0].id
     } catch (err) {
