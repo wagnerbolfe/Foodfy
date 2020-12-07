@@ -104,6 +104,8 @@ module.exports = {
 
     let adminQuery = ''
 
+    console.log(user)
+
     if (user.is_admin === false) {
       adminQuery = `
         AND recipes.user_id = '${id}'
