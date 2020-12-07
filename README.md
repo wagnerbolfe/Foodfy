@@ -66,13 +66,12 @@ git clone https://github.com/wagnerbolfe/Foodfy.git
 
 ## Como Usar
 
-1 - Edite o arquivo <b>seeds.js</b> com seu nome e email.<br>
-2 - Edite o arquivo <b>src/lib/mailer.js</b> com seu <b>user e pass</b> do site mailtrap <br> para poder receber sua senha de admin.<br>
-3 - Rode o comando no terminal:
+1 - Rode o comando no terminal:
 ```sh
 node seeds.js
 ```
-Assim o database terá seu usuário como admin e você receberá uma senha no mailtrap.
+
+**Utilize o e-mail "foodfy@gmail.com" e a senha "12345" para acessar como administrador.**
 
 4 - Rode o comando para iniciar o servidor:
 ```sh
